@@ -11,9 +11,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 1.8
@@ -29,11 +27,8 @@ jobs:
       with:
         name: greetings-jar
         path: build/libs
-    #- name: SonarCloud Scan
-    #  uses: SonarSource/sonarcloud-github-action@v1.6
         
   execution:
-
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -45,3 +40,21 @@ jobs:
     - shell: bash
       run: |
         java -jar greetings-actions.jar ${{ github.event.inputs.myValues }}
+
+  #quality-check:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #  - name: SonarCloud Scan
+  #    uses: SonarSource/sonarcloud-github-action@v1.6
+      
+  count-args:
+    runs-on: ubuntu-latest
+    steps:
+    - id: report-count
+      uses: vjvasu/arg-count-action@main
+      with:
+        arguments-to-count: ${{ github.event.inputs.myValues }}
+    - run: echo
+    - shell: bash
+      run: |
+        echo argument count is ${{ steps.report-count.outputs.arg-count }}
