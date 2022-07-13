@@ -41,11 +41,11 @@ jobs:
       run: |
         java -jar greetings-actions.jar ${{ github.event.inputs.myValues }}
 
-  quality-check:
-    runs-on: ubuntu-latest
-    steps:
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@v1.6
+  #quality-check:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #  - name: SonarCloud Scan
+  #    uses: SonarSource/sonarcloud-github-action@v1.6
       
   count-args:
     runs-on: ubuntu-latest
