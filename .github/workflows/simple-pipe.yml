@@ -29,8 +29,8 @@ jobs:
       with:
         name: greetings-jar
         path: build/libs
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@v1.6
+    #- name: SonarCloud Scan
+    #  uses: SonarSource/sonarcloud-github-action@v1.6
         
   execution:
 
